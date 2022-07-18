@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include novacept_blaster *.css
+recursive-include novacept_blaster *.csv
+recursive-include novacept_blaster *.html
+recursive-include novacept_blaster *.ico
+recursive-include novacept_blaster *.js
+recursive-include novacept_blaster *.json
+recursive-include novacept_blaster *.md
+recursive-include novacept_blaster *.png
+recursive-include novacept_blaster *.py
+recursive-include novacept_blaster *.svg
+recursive-include novacept_blaster *.txt
+recursive-exclude novacept_blaster *.pyc
