@@ -1,0 +1,55 @@
+{
+ "cards_label": "Campaign",
+ "category": "Modules",
+ "charts": [],
+ "creation": "2022-07-19 13:10:46.715928",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "icon": "mail",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Novacept Blaster",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Email Camp",
+   "link_to": "Email Camp",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Facebook Setting",
+   "link_to": "Facebook Setting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Instagram Setting",
+   "link_to": "Instagram Setting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2022-07-19 13:21:38.368765",
+ "modified_by": "Administrator",
+ "module": "Novacept Blaster",
+ "name": "Novacept Blaster",
+ "onboarding": "novacept_blaster",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 1,
+ "shortcuts": []
+}
