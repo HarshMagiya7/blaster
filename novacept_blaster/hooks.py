@@ -30,6 +30,23 @@ app_license = "MIT"
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
+fixtures = [
+	{"dt": "Role", "filters": [
+		[
+		"name", "in", [
+			"Novacept blaster"
+			]
+		]
+	]},
+	{"dt": "Custom DocPerm", "filters": [
+		[
+		"role", "in", [
+			"Novacept blaster"
+			]
+		]
+	]},
+]
+
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
