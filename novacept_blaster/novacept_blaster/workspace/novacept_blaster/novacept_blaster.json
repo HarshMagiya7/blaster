@@ -18,11 +18,36 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Campaign",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Email Camp",
-   "link_to": "Email Camp",
+   "link_to": "Email Camps",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Social Post",
+   "link_to": "Social Post",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Social Media Setting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -43,7 +68,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-19 13:21:38.368765",
+ "modified": "2022-07-21 11:32:01.671808",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Novacept Blaster",

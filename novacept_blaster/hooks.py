@@ -30,22 +30,22 @@ app_license = "MIT"
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
 
-fixtures = [
-	{"dt": "Role", "filters": [
-		[
-		"name", "in", [
-			"Novacept blaster"
-			]
-		]
-	]},
-	{"dt": "Custom DocPerm", "filters": [
-		[
-		"role", "in", [
-			"Novacept blaster"
-			]
-		]
-	]},
-]
+#fixtures = [
+#	{"dt": "Role", "filters": [
+#		[
+#		"name", "in", [
+#			"Novacept blaster"
+#			]
+#		]
+#	]},
+#	{"dt": "Custom DocPerm", "filters": [
+#		[
+#		"role", "in", [
+#			"Novacept blaster"
+#			]
+#		]
+#	]},
+#]
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -123,23 +123,26 @@ fixtures = [
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"novacept_blaster.tasks.all"
-# 	],
-# 	"daily": [
-# 		"novacept_blaster.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"novacept_blaster.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"novacept_blaster.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"novacept_blaster.tasks.monthly"
-# 	]
-# }
+scheduler_events = {
+ 	"all":  [
+		"novacept_blaster.novacept_blaster.doctype.social_post.social_post.process_scheduled_social_media_posts",
+		"novacept_blaster.novacept_blaster.doctype.email_camps.email_camps.send_email_to_leads_or_contacts",
+		"novacept_blaster.novacept_blaster.doctype.email_camps.email_camps.set_email_campaign_status",
+
+	],
+ 	"daily": [
+ 		"novacept_blaster.tasks.daily"
+ 	],
+ 	"hourly": [
+ 		"novacept_blaster.tasks.hourly"
+ 	],
+ 	"weekly": [
+ 		"novacept_blaster.tasks.weekly"
+ 	],
+ 	"monthly": [
+ 		"novacept_blaster.tasks.monthly"
+ 	]
+}
 
 # Testing
 # -------
