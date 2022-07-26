@@ -66,9 +66,18 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "LinkedIn Setting",
+   "link_to": "LinkedIn Setting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-07-21 11:32:01.671808",
+ "modified": "2022-07-26 19:58:32.533233",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Novacept Blaster",
