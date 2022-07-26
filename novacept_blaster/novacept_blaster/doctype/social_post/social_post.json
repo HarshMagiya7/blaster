@@ -21,8 +21,13 @@
   "page_name",
   "fb_link",
   "section_insta",
-  "acc_name",
   "caption",
+  "column_break_16",
+  "acc_name",
+  "linkedin_section",
+  "linkedin_post",
+  "column_break_20",
+  "link_page_name",
   "section_attachment",
   "media_type",
   "media",
@@ -64,13 +69,13 @@
    "label": "Share On"
   },
   {
-   "default": "1",
+   "default": "0",
    "fieldname": "facebook",
    "fieldtype": "Check",
    "label": "Fcaebook"
   },
   {
-   "default": "1",
+   "default": "0",
    "fieldname": "instagram",
    "fieldtype": "Check",
    "label": "Instagram"
@@ -79,7 +84,6 @@
    "default": "0",
    "fieldname": "linkedin",
    "fieldtype": "Check",
-   "hidden": 1,
    "label": "LinkedIn"
   },
   {
@@ -91,7 +95,7 @@
   },
   {
    "fieldname": "text",
-   "fieldtype": "Small Text",
+   "fieldtype": "Text",
    "label": "Description",
    "mandatory_depends_on": "eval:doc.facebook ==1"
   },
@@ -158,11 +162,39 @@
    "options": "Social Post",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.linkedin==1",
+   "fieldname": "linkedin_section",
+   "fieldtype": "Section Break",
+   "label": "LinkedIn"
+  },
+  {
+   "fieldname": "link_page_name",
+   "fieldtype": "Link",
+   "label": "LinkedIn Page",
+   "mandatory_depends_on": "eval:doc.linkedin ==1",
+   "options": "LinkedIn Setting"
+  },
+  {
+   "fieldname": "linkedin_post",
+   "fieldtype": "Text",
+   "label": "Post",
+   "mandatory_depends_on": "eval:doc.linkedin ==1"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-21 00:45:00.215630",
+ "modified": "2022-07-26 19:39:35.829584",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Social Post",

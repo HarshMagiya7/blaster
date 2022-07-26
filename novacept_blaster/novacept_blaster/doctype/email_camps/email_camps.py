@@ -110,20 +110,20 @@ def send_mail(entry, email_camp):
 	sender = frappe.db.get_value("User", email_camp.get("sender"), "email")
 	context = {"doc": frappe.get_doc(email_camp.email_campaign_for, email_camp.recipient)}
 	# send mail and link communication to document
-	for i in recipient_list:
-		comm = make(
-			doctype="Email Camps",
-			name=email_camp.name,
-			subject=frappe.render_template(email_template.get("subject"), context),
-			content=frappe.render_template(email_template.get("response"), context),
-			sender=sender,
-			recipients = i ,
-			#bcc=recipient_list,
-			communication_medium="Email",
-			sent_or_received="Sent",
-			send_email=True,
-			email_template=email_template.name,
-		)
+#	for i in recipient_list:
+	comm = make(
+		doctype="Email Camps",
+		name=email_camp.name,
+		subject=frappe.render_template(email_template.get("subject"), context),
+		content=frappe.render_template(email_template.get("response"), context),
+		sender=sender,
+		recipients = sender ,
+		bcc=recipient_list,
+		communication_medium="Email",
+		sent_or_received="Sent",
+		send_email=True,
+		email_template=email_template.name,
+	)
 	return comm
 
 

@@ -12,7 +12,7 @@ from frappe.model.document import Document
 
 class SocialPost(Document):
 	def validate(self):
-		if not self.facebook and not self.instagram:
+		if not self.facebook and not self.instagram and not self.linkedin :
 			frappe.throw(_("Select atleast one Social Media Platform"))
 
 		if self.scheduled_time:
@@ -43,7 +43,10 @@ class SocialPost(Document):
 				media_url = frappe.utils.get_url() + self.media
 				instagram = frappe.get_doc("Instagram Setting",self.acc_name)
 				instagram_post = instagram.post(self.caption,self.acc_name, media_url,self.media_type)
-
+			if self.linkedin:
+				linkedin = frappe.get_doc("LinkedIn Setting",self.link_page_name)
+				linkedin_post = linkedin.post(self.linkedin_post, self.title, self.media)
+				print(f'\n\n\n\n{linkedin_post.headers["X-RestLi-Id"]}\n\n\n\n')
 			self.db_set("post_status", "Posted")
 
 		except Exception as e:
