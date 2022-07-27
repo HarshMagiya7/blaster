@@ -38,7 +38,8 @@ class SocialPost(Document):
 					media_url = frappe.utils.get_url() + self.media
 					facebook_post = facebook.post(self.text,self.page_name ,self.media_type ,media_url,self.fb_link)
 				else:
-					facebook_post = facebook.post(self.text,self.page_name ,self.fb_link)
+					#facebook_post = facebook.post(self.text,self.page_name ,self.fb_link)
+					facebook_post = facebook.post(self.text,self.page_name,self.media_type,self.media ,self.fb_link)
 			if self.instagram:
 				media_url = frappe.utils.get_url() + self.media
 				instagram = frappe.get_doc("Instagram Setting",self.acc_name)
