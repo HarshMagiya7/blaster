@@ -8,7 +8,6 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
-  "campaign_name",
   "scheduled_time",
   "post_status",
   "column_break_6",
@@ -39,13 +38,6 @@
    "fieldtype": "Data",
    "label": "Title",
    "reqd": 1
-  },
-  {
-   "fieldname": "campaign_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Campaign",
-   "options": "Campaign"
   },
   {
    "allow_on_submit": 1,
