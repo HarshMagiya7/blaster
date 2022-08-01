@@ -63,7 +63,7 @@ def process_scheduled_social_media_posts():
 		fields=["name", "scheduled_time"],
 	)
 	start = frappe.utils.now_datetime() + datetime.timedelta(minutes=3)
- 	end = start + datetime.timedelta(minutes=5)
+	end = start + datetime.timedelta(minutes=5)
 	for post in posts:
 		if post.scheduled_time:
 			post_time = frappe.utils.get_datetime(post.scheduled_time)
