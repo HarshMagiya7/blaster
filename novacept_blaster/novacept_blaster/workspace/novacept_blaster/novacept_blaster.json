@@ -77,13 +77,32 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-26 19:58:32.533233",
- "modified_by": "Administrator",
+ "modified": "2022-07-30 00:43:24.046833",
+ "modified_by": "novacepttester@smartedgesolutions.co.uk",
  "module": "Novacept Blaster",
  "name": "Novacept Blaster",
  "onboarding": "novacept_blaster",
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 1,
- "shortcuts": []
+ "shortcuts": [
+  {
+   "doc_view": "",
+   "label": "Campaign",
+   "link_to": "Campaign",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Email Group",
+   "link_to": "Email Group",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Email Templates",
+   "link_to": "Email Template",
+   "type": "DocType"
+  }
+ ]
 }

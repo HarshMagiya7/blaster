@@ -14,7 +14,8 @@
   "start_date",
   "last_post_time",
   "end_date",
-  "status"
+  "status",
+  "bcc"
  ],
  "fields": [
   {
@@ -26,12 +27,12 @@
    "reqd": 1
   },
   {
-   "default": "Lead",
+   "default": "Email Group",
    "fieldname": "email_campaign_for",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Email Campaign For ",
-   "options": "\nLead\nContact\nEmail Group",
+   "options": "\nContact\nEmail Group",
    "reqd": 1
   },
   {
@@ -77,10 +78,16 @@
    "label": "Status",
    "options": "\nScheduled\nIn Progress\nCompleted\nUnsubscribed",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "bcc",
+   "fieldtype": "Check",
+   "label": "BCC"
   }
  ],
  "links": [],
- "modified": "2022-07-25 00:36:02.564839",
+ "modified": "2022-08-01 19:48:27.173554",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Email Camps",

@@ -8,7 +8,7 @@ from frappe import _
 from frappe.core.doctype.communication.email import make
 from frappe.model.document import Document
 from frappe.utils import add_days, getdate, today, get_datetime
-
+import datetime
 class EmailCamps(Document):
 	def validate(self):
 		self.set_date()
@@ -20,7 +20,9 @@ class EmailCamps(Document):
 		self.update_status()
 
 	def set_date(self):
-		if  frappe.utils.get_datetime(self.start_date) < frappe.utils.now_datetime():
+		print(f'\n\n\nCurrent\n{frappe.utils.now_datetime() + datetime.timedelta(seconds = 30)}\n\n\n\n')
+		print(f'\n\n\n\nStart{frappe.utils.get_datetime(self.start_date)}\n\n\n\n')
+		if  frappe.utils.get_datetime(self.start_date) <(frappe.utils.now_datetime() - datetime.timedelta(seconds = 30)) :
 			frappe.throw(_("Scheduled Time must be a future time."))
 		# set the end date as start date + max(send after days) in campaign schedule
 		send_after_days = []
@@ -83,7 +85,7 @@ def send_email_to_leads_or_contacts():
 	)
 	for camp in email_campaigns:
 		email_camp = frappe.get_doc("Email Camps", camp.name)
-		last_post = email_camp.get("last_post_time")
+		last_post = email_camp.get("last_post_time") - datetime.timedelta(seconds = 30)
 		campaign = frappe.get_cached_doc("Campaign", email_camp.campaign_name)
 		for entry in campaign.get("campaign_schedules"):
 			scheduled_date = add_days(email_camp.get("start_date"), entry.get("send_after_days"))
@@ -109,9 +111,10 @@ def send_mail(entry, email_camp):
 	email_template = frappe.get_doc("Email Template", entry.get("email_template"))
 	sender = frappe.db.get_value("User", email_camp.get("sender"), "email")
 	context = {"doc": frappe.get_doc(email_camp.email_campaign_for, email_camp.recipient)}
+	bcc = email_camp.get("bcc")
 	# send mail and link communication to document
-#	for i in recipient_list:
-	comm = make(
+	if bcc:
+		comm = make(
 		doctype="Email Camps",
 		name=email_camp.name,
 		subject=frappe.render_template(email_template.get("subject"), context),
@@ -122,8 +125,27 @@ def send_mail(entry, email_camp):
 		communication_medium="Email",
 		sent_or_received="Sent",
 		send_email=True,
+		reply_to = None,
 		email_template=email_template.name,
 	)
+
+	else:
+		for i in recipient_list:
+			comm = make(
+				doctype="Email Camps",
+				name=email_camp.name,
+				subject=frappe.render_template(email_template.get("subject"), context),
+				content=frappe.render_template(email_template.get("response"), context),
+				sender=sender,
+				recipients = i ,
+#				bcc=recipient_list,
+				communication_medium="Email",
+				sent_or_received="Sent",
+				send_email=True,
+				reply_to = None,
+				read_receipt = 1,
+				email_template=email_template.name,
+			)
 	return comm
 
 
