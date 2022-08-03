@@ -16,7 +16,7 @@ class SocialPost(Document):
 			frappe.throw(_("Select atleast one Social Media Platform"))
 
 		if self.scheduled_time:
-			current_time = frappe.utils.now_datetime() - datetime.timedelta(seconds = 30)
+			current_time = frappe.utils.now_datetime() - datetime.timedelta(seconds = 45)
 			scheduled_time = frappe.utils.get_datetime(self.scheduled_time)
 			if scheduled_time < current_time:
 				frappe.throw(_("Scheduled Time must be a future time"))
@@ -62,8 +62,8 @@ def process_scheduled_social_media_posts():
 		filters={"post_status": "Scheduled", "docstatus": 1},
 		fields=["name", "scheduled_time"],
 	)
-	start = frappe.utils.now_datetime() + datetime.timedelta(minutes=3)
-	end = start + datetime.timedelta(minutes=5)
+	start = frappe.utils.now_datetime() - datetime.timedelta(minutes=4)
+	end = frappe.utils.now_datetime() + datetime.timedelta(minutes=6)
 	for post in posts:
 		if post.scheduled_time:
 			post_time = frappe.utils.get_datetime(post.scheduled_time)

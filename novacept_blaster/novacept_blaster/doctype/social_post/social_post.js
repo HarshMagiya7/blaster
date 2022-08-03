@@ -16,7 +16,7 @@ frappe.ui.form.on('Social Post', {
                 if (frm.doc.scheduled_time) {
                         let scheduled_time = new Date(frm.doc.scheduled_time);
                         let date_time = new Date();
-                        if (scheduled_time.getTime() < date_time.getTime()) {
+                        if (scheduled_time.getTime() < (date_time.getTime() - 45*1000)) {
                                 frappe.throw(__("Scheduled Time must be a future time."));
                         }
                 }
