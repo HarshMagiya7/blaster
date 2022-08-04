@@ -26,8 +26,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Email Camp",
-   "link_to": "Email Camps",
+   "label": "Email Post",
+   "link_to": "Email Post",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -77,8 +77,8 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-30 00:43:24.046833",
- "modified_by": "novacepttester@smartedgesolutions.co.uk",
+ "modified": "2022-08-04 21:42:14.303336",
+ "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Novacept Blaster",
  "onboarding": "novacept_blaster",

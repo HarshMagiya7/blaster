@@ -9,7 +9,7 @@ from frappe.core.doctype.communication.email import make
 from frappe.model.document import Document
 from frappe.utils import add_days, getdate, today, get_datetime
 import datetime
-class EmailCamps(Document):
+class EmailPost(Document):
 	def validate(self):
 		self.set_date()
 		self.trial()
@@ -22,7 +22,7 @@ class EmailCamps(Document):
 	def set_date(self):
 		print(f'\n\n\nCurrent\n{frappe.utils.now_datetime() + datetime.timedelta(seconds = 30)}\n\n\n\n')
 		print(f'\n\n\n\nStart{frappe.utils.get_datetime(self.start_date)}\n\n\n\n')
-		if  frappe.utils.get_datetime(self.start_date) <(frappe.utils.now_datetime() - datetime.timedelta(seconds = 30)) :
+		if  frappe.utils.get_datetime(self.start_date) <(frappe.utils.now_datetime()) :
 			frappe.throw(_("Scheduled Time must be a future time."))
 		# set the end date as start date + max(send after days) in campaign schedule
 		send_after_days = []
@@ -48,7 +48,7 @@ class EmailCamps(Document):
 		print(self.last_post_time)
 	def validate_email_camp_already_exists(self):
 		email_camp_exists = frappe.db.exists(
-			"Email Camps",
+			"Email Post",
 			{
 				"campaign_name": self.campaign_name,
 				"recipient": self.recipient,
@@ -75,17 +75,17 @@ class EmailCamps(Document):
 			self.status = "Completed"
 
 	def update_post_status(self):
-		frappe.db.set_value("Email Camps",self.name,"last_post_time",frappe.utils.now_datetime())
+		frappe.db.set_value("Email Post",self.name,"last_post_time",frappe.utils.now_datetime())
 		frappe.db.commit()
 
 # called through hooks to send campaign mails to leads
 def send_email_to_leads_or_contacts():
 	email_campaigns = frappe.get_all(
-		"Email Camps", filters={"status": ("not in", ["Unsubscribed", "Completed", "Scheduled"])}
+		"Email Post", filters={"status": ("not in", ["Unsubscribed", "Completed", "Scheduled"])}
 	)
 	for camp in email_campaigns:
-		email_camp = frappe.get_doc("Email Camps", camp.name)
-		last_post = email_camp.get("last_post_time") - datetime.timedelta(seconds = 30)
+		email_camp = frappe.get_doc("Email Post", camp.name)
+		last_post = email_camp.get("last_post_time")
 		campaign = frappe.get_cached_doc("Campaign", email_camp.campaign_name)
 		for entry in campaign.get("campaign_schedules"):
 			scheduled_date = add_days(email_camp.get("start_date"), entry.get("send_after_days"))
@@ -115,7 +115,7 @@ def send_mail(entry, email_camp):
 	# send mail and link communication to document
 	if bcc:
 		comm = make(
-		doctype="Email Camps",
+		doctype="Email Post",
 		name=email_camp.name,
 		subject=frappe.render_template(email_template.get("subject"), context),
 		content=frappe.render_template(email_template.get("response"), context),
@@ -132,7 +132,7 @@ def send_mail(entry, email_camp):
 	else:
 		for i in recipient_list:
 			comm = make(
-				doctype="Email Camps",
+				doctype="Email Post",
 				name=email_camp.name,
 				subject=frappe.render_template(email_template.get("subject"), context),
 				content=frappe.render_template(email_template.get("response"), context),
@@ -151,13 +151,13 @@ def send_mail(entry, email_camp):
 
 # called from hooks on doc_event Email Unsubscribe
 def unsubscribe_recipient(unsubscribe, method):
-	if unsubscribe.reference_doctype == "Email Camps":
-		frappe.db.set_value("Email Camps", unsubscribe.reference_name, "status", "Unsubscribed")
+	if unsubscribe.reference_doctype == "Email Post":
+		frappe.db.set_value("Email Post", unsubscribe.reference_name, "status", "Unsubscribed")
 
 
 # called through hooks to update email campaign status daily
 def set_email_campaign_status():
-	email_camps = frappe.get_all("Email Camps", filters={"status": ("!=", "Unsubscribed")})
-	for entry in email_camps:
-		email_camp = frappe.get_doc("Email Camps", entry.name)
+	email_post = frappe.get_all("Email Post", filters={"status": ("!=", "Unsubscribed")})
+	for entry in email_post:
+		email_camp = frappe.get_doc("Email Post", entry.name)
 		email_camp.update_status()

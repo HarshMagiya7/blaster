@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestEmailCamps(unittest.TestCase):
+class TestEmailPost(unittest.TestCase):
 	pass

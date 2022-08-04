@@ -62,7 +62,6 @@
   {
    "fieldname": "last_post_time",
    "fieldtype": "Datetime",
-   "hidden": 1,
    "label": "Last posted",
    "read_only": 1
   },
@@ -87,10 +86,10 @@
   }
  ],
  "links": [],
- "modified": "2022-08-01 19:48:27.173554",
+ "modified": "2022-08-04 21:57:30.169951",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
- "name": "Email Camps",
+ "name": "Email Post",
  "owner": "Administrator",
  "permissions": [
   {
