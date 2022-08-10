@@ -43,7 +43,10 @@ class FacebookSetting(Document):
 		headers = {}
 
 		response = requests.request("GET", url, headers=headers, data=payload)
-		return (ast.literal_eval(response.text)['data'])[0]['access_token']
+		for i in range(len(ast.literal_eval(response.text)['data'])):
+			if (ast.literal_eval(response.text)['data'][i]['id']) == page_id:
+				return ast.literal_eval(response.text)['data'][i]['access_token']
+#		return (ast.literal_eval(response.text)['data'])[0]['access_token']
 
 	def acc_id(self):
 #		print(f'\n\n\n\n ACC  \n\n\n\n')
