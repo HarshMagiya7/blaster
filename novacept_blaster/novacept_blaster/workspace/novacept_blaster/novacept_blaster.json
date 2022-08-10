@@ -77,11 +77,11 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-04 21:42:14.303336",
+ "modified": "2022-08-10 22:35:00.246358",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Novacept Blaster",
- "onboarding": "novacept_blaster",
+ "onboarding": "",
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 1,
