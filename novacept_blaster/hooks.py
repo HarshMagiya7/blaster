@@ -131,20 +131,20 @@ scheduler_events = {
  	"all":  [
 		"novacept_blaster.novacept_blaster.doctype.social_post.social_post.process_scheduled_social_media_posts",
 		"novacept_blaster.novacept_blaster.doctype.email_post.email_post.send_email_to_leads_or_contacts",
-		"novacept_blaster.novacept_blaster.doctype.email_psot.email_post.set_email_campaign_status",
+		"novacept_blaster.novacept_blaster.doctype.email_post.email_post.set_email_campaign_status",
 
-	],
- 	"daily": [
- 		"novacept_blaster.tasks.daily"
- 	],
- 	"hourly": [
- 		"novacept_blaster.tasks.hourly"
- 	],
- 	"weekly": [
- 		"novacept_blaster.tasks.weekly"
- 	],
- 	"monthly": [
- 		"novacept_blaster.tasks.monthly"
+#	],
+# 	"daily": [
+# 		"novacept_blaster.tasks.daily"
+# 	],
+# 	"hourly": [
+# 		"novacept_blaster.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"novacept_blaster.tasks.weekly"
+# 	],
+# 	"monthly": [
+# 		"novacept_blaster.tasks.monthly"
  	]
 }
 
