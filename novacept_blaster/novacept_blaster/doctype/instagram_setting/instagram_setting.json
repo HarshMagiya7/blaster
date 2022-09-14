@@ -10,6 +10,7 @@
   "account_name",
   "page_details",
   "acc_name",
+  "fb_page_id",
   "insta_id",
   "short_lived_access_token",
   "app_detail",
@@ -87,14 +88,20 @@
    "label": "Session Status",
    "options": "Expired\nActive",
    "read_only": 1
+  },
+  {
+   "fieldname": "fb_page_id",
+   "fieldtype": "Data",
+   "label": "Facebook Page ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-25 12:25:22.411675",
+ "modified": "2022-09-14 17:28:04.520216",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Instagram Setting",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -110,5 +117,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }

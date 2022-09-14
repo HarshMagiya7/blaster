@@ -18,12 +18,13 @@ class InstagramSetting(Document):
 		global app_secret
 		global short_lived_access_token
 		global permanent_access_token
+		global fb_page_id
 		insta_id = ''
 		app_id = self.app_id
 		app_secret = self.app_secret
 		short_lived_access_token = self.short_lived_access_token
 		permanent_access_token = ''
-
+		fb_page_id = self.fb_page_id
 		try:
 			permanent_access_token = self.long_lived_access()
 			insta_id = self.insta_acc()
@@ -40,14 +41,14 @@ class InstagramSetting(Document):
 		response = requests.request("GET", url, headers=headers, data=payload)
 		return ast.literal_eval(response.text)['access_token']
 
-	def fb_page_id(self):
-		url = f'https://graph.facebook.com/v14.0/me/accounts?access_token={permanent_access_token}'
-		response = requests.request("GET", url)
-		return (ast.literal_eval(response.text)['data'])[0]['id']
+#	def fb_page_id(self):
+#		url = f'https://graph.facebook.com/v14.0/me/accounts?access_token={permanent_access_token}'
+#		response = requests.request("GET", url)
+#		return (ast.literal_eval(response.text)['data'])[0]['id']
 
 	def insta_acc(self):
-		page_id = self.fb_page_id()
-		url = f'https://graph.facebook.com/v14.0/{page_id}?fields=instagram_business_account&access_token={permanent_access_token}'
+#		page_id = self.fb_page_id
+		url = f'https://graph.facebook.com/v14.0/{fb_page_id}?fields=instagram_business_account&access_token={permanent_access_token}'
 		response = requests.request("GET", url)
                 # return response
 		return (ast.literal_eval(response.text))['instagram_business_account']['id']
