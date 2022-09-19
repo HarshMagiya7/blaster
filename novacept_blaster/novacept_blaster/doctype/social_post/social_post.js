@@ -13,13 +13,13 @@ frappe.ui.form.on('Social Post', {
 			if (frm.doc.facebook === 0 && frm.doc.linkedin === 0 && frm.doc.instagram === 0) {
                         frappe.throw(__("Select atleast one Social Media Platform to Share on."));
                 }
-                if (frm.doc.scheduled_time) {
-                        let scheduled_time = new Date(frm.doc.scheduled_time);
-                        let date_time = new Date();
-                        if (scheduled_time.getTime() < (date_time.getTime() - 45*1000)) {
-                                frappe.throw(__("Scheduled Time must be a future time."));
-                        }
-                }
+//                if (frm.doc.scheduled_time) {
+//                        let scheduled_time = new Date(frm.doc.scheduled_time);
+//                        let date_time = new Date();
+//                        if (scheduled_time.getTime() < (date_time.getTime() - 45*1000)) {
+//                                frappe.throw(__("Scheduled Time must be a future time."));
+//                        }
+//                }
 	},
 	refresh: function(frm) {
 //                frm.trigger('text');
