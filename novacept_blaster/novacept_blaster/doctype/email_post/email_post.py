@@ -109,7 +109,7 @@ def send_mail(entry, email_camp):
 		)
 
 	email_template = frappe.get_doc("Email Template", entry.get("email_template"))
-	sender = frappe.db.get_value("User", email_camp.get("sender"), "email")
+	sender = frappe.db.get_value("Email Account", email_camp.get("sender"), "email_id")
 	context = {"doc": frappe.get_doc(email_camp.email_campaign_for, email_camp.recipient)}
 	bcc = email_camp.get("bcc")
 	# send mail and link communication to document
