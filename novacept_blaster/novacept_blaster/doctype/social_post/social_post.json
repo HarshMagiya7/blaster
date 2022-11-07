@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "format: CRM-SMP-{YYYY}-{MM}-{DD}-{###}",
+ "autoname": "format: SP-{YYYY}-{MM}-{DD}-{###}",
  "creation": "2022-07-21 00:15:56.051287",
  "doctype": "DocType",
  "documentation": "https://docs.erpnext.com/docs/user/manual/en/CRM/social-media-post",
@@ -19,6 +19,8 @@
   "column_break_11",
   "page_name",
   "fb_link",
+  "whatsapp_button",
+  "whatsapp_button_label",
   "section_insta",
   "caption",
   "column_break_16",
@@ -36,6 +38,7 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Title",
    "reqd": 1
   },
@@ -57,8 +60,7 @@
   },
   {
    "fieldname": "column_break_6",
-   "fieldtype": "Column Break",
-   "label": "Share On"
+   "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -103,6 +105,7 @@
    "options": "Facebook Setting"
   },
   {
+   "depends_on": "eval:doc.media_type ==\"\"",
    "fieldname": "fb_link",
    "fieldtype": "Data",
    "label": "Link url"
@@ -136,7 +139,7 @@
    "fieldname": "media_type",
    "fieldtype": "Select",
    "label": "Media Type",
-   "mandatory_depends_on": "eval:doc.instagram",
+   "mandatory_depends_on": "eval:doc.instagram || doc.whatsapp_button",
    "options": "\nIMAGE\nVIDEO"
   },
   {
@@ -182,14 +185,28 @@
   {
    "fieldname": "column_break_20",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "whatsapp_button",
+   "fieldtype": "Check",
+   "label": "Whatsapp Button"
+  },
+  {
+   "depends_on": "eval:doc.whatsapp_button ==1",
+   "fieldname": "whatsapp_button_label",
+   "fieldtype": "Data",
+   "label": "Button Label",
+   "mandatory_depends_on": "eval:doc.whatsapp_button ==1"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-26 19:39:35.829584",
+ "modified": "2022-11-05 01:37:31.551870",
  "modified_by": "Administrator",
  "module": "Novacept Blaster",
  "name": "Social Post",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -237,6 +254,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "title",
  "track_changes": 1
 }
